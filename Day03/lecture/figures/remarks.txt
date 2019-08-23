@@ -1,0 +1,9 @@
+slide 12: citation should be Litwin-Kumar & Doiron 2012 
+
+The citation "Rabinovich et al. 2008" can refer to
+Rbinovich, Huerta, Gilles 2008
+http://science.sciencemag.org/content/321/5885/48.full
+and
+Rabinovich PLoS Comput Bio
+http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000072
+The figures are taken from the latter.

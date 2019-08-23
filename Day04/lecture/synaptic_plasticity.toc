@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Basic experimental findings}{5}{0}{1}
+\beamer@subsectionintoc {1}{1}{Short-term plasticity}{5}{0}{1}
+\beamer@subsectionintoc {1}{2}{Long-term plasticity}{6}{0}{1}
+\beamer@subsectionintoc {1}{3}{Spike-timing dependent plasticity}{8}{0}{1}
+\beamer@subsectionintoc {1}{4}{Homeostasis}{10}{0}{1}
+\beamer@sectionintoc {2}{Phenomenological models of synaptic plasticity}{11}{0}{2}
+\beamer@subsectionintoc {2}{1}{Spike-timing dependent plasticity}{11}{0}{2}
+\beamer@sectionintoc {3}{Beyond spike-pairings}{17}{0}{3}
+\beamer@subsectionintoc {3}{1}{Influence of neuromodulators}{17}{0}{3}

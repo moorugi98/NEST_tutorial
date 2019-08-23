@@ -1,0 +1,613 @@
+<!doctype html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Keywords and Beer</title>
+
+    <meta name="description" content="An SVG Plugin for reveal.js">
+    <meta name="author" content="Nicholas Bollweg">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/juelich_basic_css/juelich.css" >
+		<!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '//cdn.jsdelivr.net/reveal.js/latest/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+    <style>
+      .column{ width: 70%; float:left;}
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+
+
+<section>
+    <section >
+    <img src="css/juelich_basic_css/placeholder.jpg" height="100%" >
+    <div id="colorstrip"/>
+    <h2><font color="white" >Simulation of Biological Neural Networks</font></h2>
+    <h3><font color="white" >Topological Networks</font></h3>
+    <h4><font color="white" >{r.pauli|morrison}@fz-juelich.de</font></h4>
+
+    </section>
+</section>
+
+
+
+
+
+<section>
+    <section><h1>Brain structure from Macro- to Microscopic scale</h1></section>
+	<section>
+        <h2>Macroscopic structure: the Forebrain</h2>
+        <img src="presentations/20180530_topological_networks/figs/EmbryonicBrain.png" width="45%" >
+
+    <img src="presentations/20180530_topological_networks/figs/Gray717.png" width="35%" >
+    <ul>
+        <li>
+            Diencephalon: e.g. thalamus, hypothalamus
+        </li>
+        <li>
+            Telencephalon (cerebrum)
+             <ul>
+            <li>
+             basal ganglia (motor control,learning etc.), amygdala (emotions)
+            </li>
+
+            <li>
+                olfactory bulb (smell),cerebral cortex (archeocortex, <font color="#EB5F73" >
+neocortex) </font>
+            </li>
+
+             </ul>
+        </li>
+
+    </ul>
+    </section>
+
+
+    <section>
+        <h2>Macroscopic structure: cortex folds</h2>
+    <div id="left">
+<img src="presentations/20180530_topological_networks/figs/Gray717.png" width="100%" >
+
+    </div>
+    <div id="right">
+    <ul>
+        <li>
+            neocortex: surface of mammalian brain (gray matter)
+        </li>
+        <li>
+        strongly folded in 'higher' mammals
+                <ul>
+        <li>
+            larger surface (relative to volume)
+        </li>
+        <li>
+        efficient wiring through white matter</li>
+
+             </ul>
+        </li>
+
+             </ul>
+        </li>
+
+    </ul>
+    </div>
+    </section>
+
+
+    <section>
+        <h2>Macroscopic structure: cortex folds</h2>
+    <div id="left">
+<img src="presentations/20180530_topological_networks/figs/crtcncs_fig1_1_2.png" height="250%" >
+
+    </div>
+    <div id="right">
+    <ul>
+        <li>
+                neocortex: surface of mammalian brain (gray matter)
+        </li>
+        <li>
+            strongly folded in 'higher' mammals
+            <ul>
+                <li>
+                    larger surface (relative to volume)
+                </li>
+                <li>
+                    efficient wiring through white matter
+                </li>
+
+             </ul>
+        </li>
+
+        <li>
+        folds='sulci'
+        </li>
+        <li>
+        region between folds: gyrus
+        </li>
+        <li>
+        location of deep sulci highly conserved
+        </li>
+
+
+     </ul>
+
+
+    </div>
+    </section>
+
+
+    <section>
+        <h2>Macroscopic structure: cerebral hemispheres</h2>
+    <div id="right">
+<img src="presentations/20180530_topological_networks/figs/humbrain.png" height="100%" >
+</div>
+<div id="left">   <ul>
+    <li>
+        two (largely) symmetric hemmispheres
+    </li>
+    <li>
+    Interconnected via Corpus callosum (white matter)</li>
+
+    </ul>
+
+    </div>
+
+    </section>
+
+    <section>
+        <h2>Macroscopic structure: cerebral hemispheres</h2>
+    <div id="right">
+<img src="presentations/20180530_topological_networks/figs/visualpath.png" width="80%" >
+</div>
+<div id="left">
+    <ul>
+    <li>Brian function is sometimes lateralized
+        (preference for on hemisphere)</li>
+    <li>in general involvement of both hemispheres</li>
+    <ul>
+e.g. visual processing:
+each hemisphere receives
+information from both eyes
+however, preference of input
+from left part of the visual field
+for right hemisphere
+(and vice versa)
+        </ul>
+</ul>
+
+</div>
+
+    </section>
+
+    <section>
+        <h2>
+            Cortical areas
+        </h2>
+
+         <div id="left">
+<img src="presentations/20180530_topological_networks/figs/crtcncs_fig1_3_5.png" width="100%" >
+
+</div>
+                 <div id="right">
+       <img src="presentations/20180530_topological_networks/figs/functorganisation2.png" width="100%" >
+
+</div>
+
+        <ul>
+    <li>Subdivision of cortex into areas based on:</li>
+            <ul>
+    <li>anatomy (histological cytoarchiterual features)</li>
+    <li>functional properties</li>
+    </ul>
+    <li>frequenct coincidence: primary visul cortex and brodman area 17</li>
+    </ul>
+
+
+    </section>
+
+
+        <section>
+        <h2>
+            Cortical areas
+        </h2>
+
+         <div id="right">
+<img src="presentations/20180530_topological_networks/figs/homunculus.png" width="100%" >
+
+</div>
+
+         <div id="left">
+<ul>
+    <li> Further subsegmentation into sub areas</li>
+    <li> somatotopic maps, also in e.g. rats, star mole etc.</li>
+
+</ul>
+             <img src="presentations/20180530_topological_networks/figs/barrelcortexA.png" width="80%" >
+
+             <img src="presentations/20180530_topological_networks/figs/barrelcortexB.png" width="60%" >
+
+
+</div>
+
+    </section>
+
+    <section>
+        <h2>
+            Cortical layers
+        </h2>
+
+         <div id="right">
+<img src="presentations/20180530_topological_networks/figs/crtcncs_fig1_3_4.png" width="100%" >
+<ul>
+    <li>highly conserved structure of layers </li>
+    <li>connections from neurons in local vicinity </li>
+
+</ul>
+
+</div>
+
+         <div id="left">
+
+             <img src="presentations/20180530_topological_networks/figs/layers.png" width="80%" >
+
+         </div>
+
+    </section>
+
+
+
+
+</section>
+<section>
+    <section>
+        <h1>How are all the neurons connected?</h1>
+    </section>
+<section>
+        <h2>
+            Cortical layers
+        </h2>
+
+         <div id="right">
+        <img src="presentations/20180530_topological_networks/figs/crtcncs_fig1_3_4.png" width="90%" >
+        <ul>
+            <li>highly conserved structure of layers </li>
+            <li>connections from neurons in local vicinity </li>
+            <li>external non-local input from </li>
+        <ul>
+            <li>thalamus </li>
+            <li>distant cortical areas </li>
+
+        </ul>
+        </ul>
+
+        </div>
+
+                 <div id="left">
+
+                     <img src="presentations/20180530_topological_networks/figs/crtcncs_fig1_3_7.png" width="80%" >
+
+                 </div>
+
+    </section>
+    <section>
+        <h2>Layer and cell type specific connections</h2>
+                     <img src="presentations/20180530_topological_networks/figs/Thomson03_5_fig1.png" width="70%" >
+
+    </section>
+
+
+        <section>
+        <h2>Horizontal connectivity</h2>
+                     <img src="presentations/20180530_topological_networks/figs/Lund03_fig3B.png" width="50%" >
+
+    </section>
+
+        <section>
+        <h2>Distant dependence of connections</h2>
+                     <img src="presentations/20180530_topological_networks/figs/Hellwig00_fig7.png" width="70%" >
+
+    </section>
+
+
+
+        <section>
+        <h2>Higher order motifs</h2>
+                     <img src="presentations/20180530_topological_networks/figs/markram.png" width="55%" >
+
+    </section>
+
+    </section>
+        <section>
+
+            <section>
+        <h2>Is it important?</h2>
+    </section>
+
+
+            <section>
+        <h2>Horizontal connectivity</h2>
+                     <img src="presentations/20180530_topological_networks/figs/Voges07_PHD_fig2.png" width="100%" >
+
+    </section>
+
+
+        <section>
+        <h2>Modelling influence on dynamics</h2>
+                     <img src="presentations/20180530_topological_networks/figs/voges2012_sceme.png" width="75%" >
+    </section>
+
+        <section>
+        <h2>Modelling influence on dynamics</h2>
+                     <img src="presentations/20180530_topological_networks/figs/voges2012_dynamic.png" width="65%" >
+
+    </section>
+
+        <section>
+        <h2>Reproduce some experimental findings</h2>
+                     <img src="presentations/20180530_topological_networks/figs/doiron3.png" width="60%" >
+                     <img src="presentations/20180530_topological_networks/figs/doiron2.png" width="60%" >
+
+
+    </section>
+
+        <section>
+        <h2>Winnerless competition</h2>
+                     <img src="presentations/20180530_topological_networks/figs/wlcmptn.png" width="80%" >
+
+
+    </section>
+
+
+
+</section>
+
+      </div>
+
+    </div>
+
+    <script src="//cdn.jsdelivr.net/reveal.js/latest/lib/js/head.min.js"></script>
+    <script src="//cdn.jsdelivr.net/reveal.js/latest/js/reveal.min.js"></script>
+
+    <script>
+      var cdn = "//cdn.jsdelivr.net/reveal.js/latest/";
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+    width: '100%',
+    height: '100%'
+	// Display presentation control arrows
+	controls: true,
+
+	// Help the user learn the controls by providing hints, for example by
+	// bouncing the down arrow when they first encounter a vertical slide
+	controlsTutorial: true,
+
+	// Determines where controls appear, "edges" or "bottom-right"
+	controlsLayout: 'bottom-right',
+
+	// Visibility rule for backwards navigation arrows; "faded", "hidden"
+	// or "visible"
+	controlsBackArrows: 'faded',
+
+	// Display a presentation progress bar
+	progress: true,
+
+	// Set default timing of 2 minutes per slide
+	defaultTiming: 60,
+
+	// Display the page number of the current slide
+	slideNumber: false,
+
+	// Push each slide change to the browser history
+	history: false,
+
+	// Enable keyboard shortcuts for navigation
+	keyboard: true,
+
+	// Enable the slide overview mode
+	overview: true,
+
+	// Vertical centering of slides
+	center: true,
+
+	// Enables touch navigation on devices with touch input
+	touch: true,
+
+	// Loop the presentation
+	loop: false,
+
+	// Change the presentation direction to be RTL
+	rtl: false,
+
+	// Randomizes the order of slides each time the presentation loads
+	shuffle: false,
+
+	// Turns fragments on and off globally
+	fragments: true,
+
+	// Flags if the presentation is running in an embedded mode,
+	// i.e. contained within a limited portion of the screen
+	embedded: false,
+
+	// Flags if we should show a help overlay when the questionmark
+	// key is pressed
+	help: true,
+
+	// Flags if speaker notes should be visible to all viewers
+	showNotes: false,
+
+	// Global override for autoplaying embedded media (video/audio/iframe)
+	// - null: Media will only autoplay if data-autoplay is present
+	// - true: All media will autoplay, regardless of individual setting
+	// - false: No media will autoplay, regardless of individual setting
+	autoPlayMedia: null,
+
+	// Number of milliseconds between automatically proceeding to the
+	// next slide, disabled when set to 0, this value can be overwritten
+	// by using a data-autoslide attribute on your slides
+	autoSlide: 0,
+
+	// Stop auto-sliding after user input
+	autoSlideStoppable: true,
+
+	// Use this method for navigation when auto-sliding
+	autoSlideMethod: Reveal.navigateNext,
+
+	// Enable slide navigation via mouse wheel
+	mouseWheel: false,
+
+	// Hides the address bar on mobile devices
+	hideAddressBar: true,
+
+	// Opens links in an iframe preview overlay
+	previewLinks: false,
+
+	// Transition style
+	transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+	// Transition speed
+	transitionSpeed: 'default', // default/fast/slow
+
+	// Transition style for full page slide backgrounds
+	backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+
+	// Number of slides away from the current that are visible
+	viewDistance: 3,
+
+	// Parallax background image
+	parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+	// Parallax background size
+	parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px"
+
+	// Number of pixels to move the parallax background per slide
+	// - Calculated automatically unless specified
+	// - Set to 0 to disable movement along an axis
+	parallaxBackgroundHorizontal: null,
+	parallaxBackgroundVertical: null,
+
+	// The display mode that will be used to show slides
+	display: 'block'
+
+
+});
+
+    </script>
+<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+
+
+
+  <style type="text/css">
+    /* 1. Style header/footer <div> so they are positioned as desired. */
+    #header-left {
+        position: absolute;
+        top: 2%;
+        left: 2%;
+        color: #023D6B
+    }
+    #header-bottom {
+        position: absolute;
+        bottom: 2%;
+        right: 50%;
+        color: #023D6B
+
+    }
+    #footer-left {
+        position: absolute;
+        bottom: 2%;
+        left: 2%;
+        color: #023D6B
+
+    }
+    #left {
+  left:-8.33%;
+  text-align: left;
+  float: left;
+  width:50%;
+  z-index:-10;
+}
+
+#right {
+  left:31.25%;
+  top: 75px;
+  float: right;
+  text-align: right;
+  z-index:-10;
+  width:50%;
+}
+</style>
+
+<!-- 2. Create hidden header/footer <div> -->
+<div id="hidden" style="display:none;">
+    <div id="header">
+        <div id="header-left">Robin Pauli </div>
+        <div id="header-bottom">Mai 8, 2018</div>
+        <div id="footer-left">Member of the Helmholtz Association</div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+    // 3. On Reveal.js ready event, copy header/footer <div> into each `.slide-background` <div>
+    var header = $('#header').html();
+    if ( window.location.search.match( /print-pdf/gi ) ) {
+        Reveal.addEventListener( 'ready', function( event ) {
+            
+        });
+    }
+    else {
+        $('div.reveal').append(header);
+   }
+</script>
+
+
+  </body>
+</html>
+

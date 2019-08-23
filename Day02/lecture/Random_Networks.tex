@@ -1,0 +1,838 @@
+%
+\documentclass{beamer}
+%%\documentclass[handout]{beamer}
+
+\definecolor{headcolor}{rgb}{0,0.3,0.6}
+%\renewcommand{\alert}[1]{\textcolor{headcolor}{#1}}
+\renewcommand{\alert}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\mode<presentation>
+{
+  \usetheme{default}
+  %% \setbeamercovered{transparent}
+  \usefonttheme{professionalfonts}
+  \usefonttheme{structurebold}
+  \usecolortheme[rgb={0,0.3,0.6}]{structure}
+  %%  \usecolortheme[rgb={0,0,0.7}]{structure}
+}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{rotate}
+\usepackage{color}
+\usepackage{verbatim}
+\usepackage{xmpmulti}
+\usepackage{pgfarrows}
+%\usepackage{pgf}
+
+%\input{/home/tom/lib/tex/defs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%\AtBeginSection[]
+%{
+%  \begin{frame}<beamer>
+%    \frametitle{Outline}
+%    \tableofcontents[currentsection]
+%  \end{frame}
+%}
+% \AtBeginSubsection[]
+% {
+%   \begin{frame}<beamer>
+%     \frametitle{Outline}
+%     \tableofcontents[currentsubsection]
+%   \end{frame}
+% }
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+%\beamerdefaultoverlayspecification{<+->}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\width{12.5} % slide width
+\def\height{8.5} % slide height
+\newcommand{\showgrid}{%
+  \pgfsetlinewidth{0.8pt} 
+  \pgfgrid[step={\pgfpoint{1cm}{1cm}}]{\pgforigin}{\pgfxy(\width,\height)}{} 
+  \pgfsetlinewidth{0.1pt} 
+  \pgfgrid[stepx=0.1cm,stepy=0.1cm]{\pgforigin}{\pgfxy(\width,\height)}
+}
+\newcommand{\pgfslide}[1]{%
+  \hspace*{-1cm}
+  \begin{pgfpicture}{0cm}{0cm}{\width cm}{\height cm}
+    #1
+  \end{pgfpicture}  
+}
+\def\figpath{figs/}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\A}{{\text{A}^{-}}}
+\newcommand{\Ca}{{\text{Ca}^{2+}}}
+\newcommand{\Cl}{{\text{Cl}^{-}}}
+\newcommand{\di}{\text{d}}
+\newcommand{\diff}[2]{\displaystyle\frac{\text{d}#1}{\text{d}#2}}
+\newcommand{\e}{\text{e}}
+\newcommand{\Epop}{\mathcal{E}}
+\newcommand{\EW}[2][]{\text{E}_{#1}\left[#2\right]}
+\newcommand{\Ex}{\text{E}}
+\newcommand{\FT}{\mathfrak{F}}
+\newcommand{\iFT}{\mathfrak{F}^{-1}}
+\newcommand{\Fourier}[2]{\mathfrak{F}\left[#1\right]\left(#2\right)}
+\newcommand{\iFourier}[2]{\mathfrak{F}^{-1}\left[#1\right]\left(#2\right)}
+\newcommand{\In}{\text{I}}
+\newcommand{\inp}{\text{inp}}
+\newcommand{\Ipop}{\mathcal{I}}
+\newcommand{\K}{{\text{K}^{+}}}
+\newcommand{\Leak}{{\text{L}}}
+\newcommand{\mm}{\text{mm}}
+\newcommand{\mV}{\text{mV}}
+\newcommand{\Na}{{\text{Na}^{+}}}
+\newcommand{\one}{\mathbb{I}}
+\newcommand{\rest}{\text{rest}}
+\newcommand{\tauM}{\tau_\text{m}}
+\newcommand{\tauR}{\tau_\text{ref}}
+\newcommand{\vect}[2]{\begin{pmatrix}#1\\#2\end{pmatrix}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%
+%% title page
+\begin{frame}
+  \pdfbookmark[2]{Title}{TitlePage}
+  \pgfslide{
+    %% 
+    \pgfputat{\pgfxy(6.25,8)}{\pgfbox[center,top]{\parbox{12.5cm}{\centering
+          \LARGE\color{headcolor}{
+            %%
+            {\bfseries Simulation of Biological Neuronal Networks}\\[0.3cm]
+            %%
+            {Cortical networks:}\\
+            {Background and simple models}
+            %% 
+          }
+        }}}
+    %% 
+    \pgfputat{\pgfxy(6.25,4.0)}{\pgfbox[center,top]{\parbox{12.5cm}{\centering
+          {\large Jyotika Bahuguna, Abigail Morrison}\\[0.2cm]
+          {\small{}morrison@fz-juelich.de{}}
+        }}}
+    %%
+    \pgfputat{\pgfxy(6.25,2.5)}{\pgfbox[center,top]{\parbox{12.5cm}{\centering
+          \footnotesize
+          Inst.~of Neuroscience and Medicine (INM-6)\\
+          Computational and Systems Neuroscience\\
+          Research Center J\"ulich, Germany
+        }}}
+    %%
+    \pgfputat{\pgfxy(0.5,-0.7)}{\pgfbox[left,bottom]{\parbox{12.5cm}{
+          \footnotesize 
+          February 4th 2015
+        }}}
+    %% \showgrid
+  }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{Outline}
+\pdfbookmark[2]{Outline}{Outline}
+\begin{frame}
+  \frametitle{\ttl}
+  \tableofcontents
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{Biological background: Cortex structure}
+\section{\ttl}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{\ttl}
+\begin{frame}
+  \frametitle{\ttl}
+  \pgfslide{
+    %% 
+    \only<1->{
+      \pgfputat{\pgfxy(0,8.5)}{\pgfbox[left,top]{\parbox{12.5cm}{\centering
+            \begin{itemize}
+            \item \textbf{Macroscopic structure:}
+              \begin{itemize}
+              %\item relatively undeveloped in lower vertebrates 
+              %  (fish, amphibia, reptiles)
+              %\item largest part of the mammalian brain 
+              \item visible with your eyes 
+              \item thousand/millions of cells forming a structure
+              \item e.g brain areas, long range connections 
+	      \end{itemize}
+	      \item \textbf{Microscopic structure:}
+                \begin{itemize}
+                \item magnifying instruments are needed to recognize structure 
+                \item depending on resolution: group of cells, single cell, molecules 
+                \item e.g small neuronal network, short range connections 
+                \end{itemize}
+            \end{itemize}
+
+          }}}
+    }
+    %% 
+    %% \showgrid
+  }
+\end{frame}
+%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{Microscopic structure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{\ttl: Cell types}
+  \pgfslide{
+    %% 
+    \only<1->{
+      \pgfputat{\pgfxy(0,8.5)}{\pgfbox[left,top]{\parbox{12.5cm}{\centering
+            \begin{itemize} 
+            \item<1-> cortical tissue is mainly composed of two cell types: 
+              \begin{itemize}
+              \item {\bfseries neuroglia (glia)}:
+                \begin{itemize}
+                \item important role in development of the brain
+                \item metabolic supportive role
+                \item control ionic composition of extracellular space
+                \item form myelin sheath around axons of neurons
+                \item do not take part in interaction between neurons on a millisecond scale 
+                (however, may play a role in slow modulations)
+                \end{itemize}
+              \item {\bfseries nerve cells (neurons)}:
+                \begin{itemize}
+                \item carry out information processing and storage in the brain
+                \end{itemize}
+              \end{itemize}
+            \end{itemize}
+          }}}
+    }
+  %%
+  %%\showgrid
+  }
+\end{frame}
+\begin{frame}
+  \frametitle{\ttl: Neuron types}
+  \pgfslide{
+  %%
+    \only<2>{
+      \pgfputat{\pgfxy(6.5,4)}{
+        \def\picname{crtcncs_fig1_2_2}
+        \pgfdeclareimage[interpolate=true,width=5cm]{\picname}{\figpath\picname}
+        \pgfbox[center,center]{\pgfuseimage{\picname}}
+      }
+      \pgfputat{\pgfxy(6.5,8.2)}{\pgfbox[center,top]{Pyramidal cell}}    
+    }
+    \only<4>{
+      \pgfputat{\pgfxy(6.5,4)}{
+        \def\picname{crtcncs_fig1_2_3}
+        \pgfdeclareimage[interpolate=true,width=5cm]{\picname}{\figpath\picname}
+        \pgfbox[center,center]{\pgfuseimage{\picname}}
+      }
+      \pgfputat{\pgfxy(6.5,8.2)}{\pgfbox[center,top]{Spiny stellate cell}}    
+    }
+    \only<6>{
+      \pgfputat{\pgfxy(6.5,4)}{
+        \def\picname{crtcncs_fig1_2_4}
+        \pgfdeclareimage[interpolate=true,width=5cm]{\picname}{\figpath\picname}
+        \pgfbox[center,center]{\pgfuseimage{\picname}}
+      }
+      \pgfputat{\pgfxy(6.5,8.2)}{\pgfbox[center,top]{Smooth stellate cell}}    
+    }
+    \pgfputat{\pgfxy(0,8.5)}{\pgfbox[left,top]{\parbox{12.5cm}{\centering
+          \begin{itemize}
+          \item<1,3,5> \alert{pyramidal cell}: 
+            \begin{itemize}
+            \item dendrites covered with spines
+            \item axon leaves cortex into white matter but has numerous branches 
+              close to cell body
+            \item axons makes \red{excitatory} synapses
+            \item cell receives input 
+              from inhibitory cells mainly at the soma and from excitatory cells at the basal 
+              and apical dendrite
+            \end{itemize}
+          \item<3,5>\alert{spiny stellate cell}:
+            \begin{itemize}
+            \item axon branches out within the cortex (rarely leaves the cortex)
+            \item axons makes \red{excitatory} synapses
+            \item soma receives exclusively inhibitory and dendrites mostly excitatory inputs
+            \end{itemize}
+          \item<5> \alert{smooth stellate cell} (e.g.~basket cell):
+            \begin{itemize}
+            \item axon branches out only in the cortex
+            \item axons makes \red{inhibitory} synapses (GABA)
+            \item both the soma and the dendrites receive a mixture of excitatory 
+              and inhibitory inputs
+            \end{itemize}
+          \end{itemize}        
+        }}}
+    %% 
+  %%\showgrid
+  }
+\end{frame}
+\begin{frame}
+  \frametitle{\ttl: Neuron types}
+  \pgfslide{
+  %%
+    \only<1->{
+      \pgfputat{\pgfxy(6.4,5)}{
+        \def\picname{Binzegger04_8441_fig2}
+        \pgfdeclareimage[interpolate=true,width=12.5cm]{\picname}{\figpath\picname}
+        \pgfbox[center,center]{\pgfuseimage{\picname}}
+      }
+      \pgfputat{\pgfxy(12.5,1.5)}{\pgfbox[right,top]{\tiny (Binzegger et al., 2004)}}
+    }
+  %%\showgrid
+  }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{\ttl: Cortex layers}
+  \pgfslide{
+  %%
+    \only<1->{
+      \pgfputat{\pgfxy(3.0,2.5)}{
+        \def\picname{layers}
+        \pgfdeclareimage[interpolate=true,width=4.2cm]{\picname}{\figpath\picname}
+        \pgfbox[center,center]{\pgfuseimage{\picname}}
+      }
+      \pgfputat{\pgfxy(9.2,3)}{
+        \def\picname{crtcncs_fig1_3_4}
+        \pgfdeclareimage[interpolate=true,width=6.5cm]{\picname}{\figpath\picname}
+        \pgfbox[center,center]{\pgfuseimage{\picname}}
+      }
+      \pgfputat{\pgfxy(7,0.5)}{\pgfbox[center,top]{\tiny primary motor area}}
+      \pgfputat{\pgfxy(11.7,0.5)}{\pgfbox[center,top]{\tiny primary sensory area}}
+    }
+    %%
+    \pgfputat{\pgfxy(0,8.5)}{\pgfbox[left,top]{\parbox{12.5cm}{\centering
+          \begin{itemize}
+          \item subdivision of neocortex into 6 (or 5) layers
+            \begin{itemize}
+            \item \alert{layer I}: 
+              very few neurons, only dendrites and mesh of horizontal axons
+            \item \alert{layer II/III}: 
+              small pyramidal cells
+            \item \alert{layer IV}: 
+              small and medium-size pyramidal cells and stellate cells 
+              in layer IVA, 
+              almost exclusively stellate cells in IVB
+            \item \alert{layer V}: 
+              all cell types, very large pyramidal cells dominate
+            \item \alert{layer VI}: 
+              small and medium-size pyramidal cells
+            \end{itemize}
+          \end{itemize}
+        }}}
+  %%\showgrid
+  }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{Cortex connectivity: Summary - some numbers}
+
+\begin{frame}
+  \frametitle{\ttl}
+  \pgfslide{
+  %%
+    \only<1->{
+      \pgfputat{\pgfxy(2.9,4.5)}{
+        \def\picname{axons}
+        \pgfdeclareimage[interpolate=true,height=7.5cm]{\picname}{\figpath\picname}
+        \pgfbox[center,center]{\pgfuseimage{\picname}}
+      }
+      \pgfputat{\pgfxy(9.3,6.5)}{
+        \def\picname{crtcncs_tab1_5_1}
+        \pgfdeclareimage[interpolate=true,width=6.5cm]{\picname}{\figpath\picname}
+        \pgfbox[center,center]{\pgfuseimage{\picname}}
+      }
+      \pgfputat{\pgfxy(9.3,2.3)}{
+        \def\picname{crtcncs_tab1_5_4}
+        \pgfdeclareimage[interpolate=true,width=6.5cm]{\picname}{\figpath\picname}
+        \pgfbox[center,center]{\pgfuseimage{\picname}}
+      }}
+      \only<2->
+      {\color{red}
+        \pgfsetlinewidth{1pt}
+        \pgfellipse[stroke]{\pgfxy(7.0,6.2)}{\pgfxy(1.3,0)}{\pgfxy(0,2)}
+        \pgfellipse[stroke]{\pgfxy(11.9,1.95)}{\pgfxy(0.7,0)}{\pgfxy(0,0.19)}
+        \pgfellipse[stroke]{\pgfxy(11.75,1.17)}{\pgfxy(0.5,0)}{\pgfxy(0,0.5)}
+      }
+  %%\showgrid
+  }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{Some graph-theoretical concepts}
+\section{\ttl}
+\begin{frame}
+  \frametitle{\ttl}
+  \pgfslide{
+  %%
+     \only<1->{
+       \pgfputat{\pgfxy(10.8,7)}{
+         \def\picname{graph}
+         \pgfdeclareimage[interpolate=true,width=4cm]{\picname}{\figpath\picname}
+         \pgfbox[center,center]{\pgfuseimage{\picname}}
+       }
+     }
+     \only<3->{
+       \pgfputat{\pgfxy(10.8,2)}{
+         \def\picname{wgraph}
+         \pgfdeclareimage[interpolate=true,width=4cm]{\picname}{\figpath\picname}
+         \pgfbox[center,center]{\pgfuseimage{\picname}}
+       }
+     }
+    \only<1->{
+      \pgfputat{\pgfxy(0,8.5)}{\pgfbox[left,top]{\parbox{12.5cm}{\centering\small
+            \begin{itemize}
+            \item<1-> Graph: $G:=(V,E)$\\[0.1cm]
+              $V$: set of 'vertices' (neurons)\\
+              $E$: set of (ordered) pairs of vertices 
+              $\curvearrowright$ 'edges' (synapses)\\[0.2cm]
+              example:\\
+              $V=\{a,b,c\}$\quad,\quad$E=\{ \{a,b\}  , \{b,a\} , \{b,c\} , \{a,c\} \}$
+            \item<2-> more convenient:
+            \item<2->[] \alert{adjacency matrix}
+              \begin{math}A=
+                \begin{pmatrix}
+                  0&1&0\\
+                  1&0&0\\
+                  1&1&0
+                \end{pmatrix}
+              \end{math}
+              \qquad (columns=axons, rows=dendrites)\\[0.2cm]
+              with 
+              \begin{math}
+                A_{ij}=
+                \begin{cases}
+                  1 & \text {edge (synapse) $j\to{}i$ present}\\
+                  0 & \text{else}
+                \end{cases}
+              \end{math}
+            \item<3->[] \alert{weight matrix}
+              \begin{math}W=
+                \begin{pmatrix}
+                  0&J&0\\
+                  J&0&0\\
+                  J&-J&0
+                \end{pmatrix}
+              \end{math}\\[0.2cm]
+              (for weighted graphs)
+            \end{itemize}
+          }}}
+    }
+    %% 
+     \only<2->{
+       \pgfputat{\pgfxy(5.15,5.3)}{\pgfbox[center,center]{
+           \scriptsize\color{red}presynaptic}}
+       \pgfputat{\pgfxy(6.2,4.5)}{\pgfbox[center,center]{
+           \rotatebox{90}{\scriptsize\color{red}postsynaptic}}}
+     }
+  %%
+  %%\showgrid
+  }
+\end{frame}
+\begin{frame}
+  \frametitle{\ttl}
+  \pgfslide{
+    %% 
+    \only<1->{
+      \pgfputat{\pgfxy(0,8.5)}{\pgfbox[left,top]{\parbox{12cm}{\centering\small
+            \begin{itemize}
+            \item<1-> \alert{in-degree}: $K^\text{in}_i=\sum_j A_{ij}$ (number of inputs)
+            \item<1->[] \alert{out-degree}: $K^\text{out}_j=\sum_i A_{ij}$ (number of targets)
+            \item<2-> note: 
+              \begin{itemize}
+              \item<2-> $A$ and $W$ generally NOT symmetric
+              \item<3-> 'space' not \emph{explicitly} represented (depends on neuron labeling)
+              \end{itemize}
+            \item<4-> structure of $W$ determines features of network dynamics
+            \item<5->[]example: linear firing-rate network model (Wilson-Cowan model)\\[0.2cm]
+              \centering\begin{math}\displaystyle
+                \tau\frac{dy}{dt}=-y+Wy  
+              \end{math}\\[0.2cm]
+              with firing rates $y(t)=[y_1(t),\ldots,y_N(t)]^\text{T}$ of neurons $1,\ldots,N$
+              \\[0.2cm]
+              $\curvearrowright$
+              stability of fixed point determined by eigenvalue spectrum of $W-1$
+            \end{itemize}
+          }}}
+    }
+    %% 
+    %%\showgrid
+  }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{Random networks}
+\section{\ttl}
+\begin{frame}
+  \frametitle{\ttl}
+  \pgfslide{
+  %%
+    \only<8>{
+      \pgfputat{\pgfxy(6.2,4.5)}
+      {
+        \def\picname{Song05_fig4B.png}
+        \pgfdeclareimage[interpolate=true,width=9.5cm]{\picname}{\figpath\picname}
+        \pgfbox[center,center]{\only<1->{\pgfuseimage{\picname}}}
+      }
+      \pgfputat{\pgfxy(6.2,0.3)}{\pgfbox[center,center]{\parbox{\linewidth}{\centering\footnotesize 
+          Song et al.~(2005),
+          \alert{Highly Nonrandom Features}\\ of Synaptic Connectivity in Local 
+          Cortical Circuits
+        }}}
+    }
+    %% 
+    \only<1->{
+      \pgfputat{\pgfxy(0,8.5)}{\pgfbox[left,top]{\parbox{12cm}{\centering\small
+            \begin{itemize}
+            \item<1-7,9-> connection matrix $W$ often treated as \emph{random} matrix
+              with defined statistical properties, e.g.
+              connection probability,
+              in- or out-degree distribution,
+              weight distribution, \ldots
+              (reflects lack of knowledge)
+            \item<2-7,9->[] \alert{\large
+                There is no such thing as {\bf THE} random-network model!}
+            \item<3-7,9->[] Be precise when describing network structure!
+            \item<4-7,9-> popular random networks in Computational Neuroscience:
+              \begin{itemize}\small
+              \item<4-7,9-> Erd\"os-Renyi graphs: 
+                \begin{itemize}\small
+                \item Each possible connection is 
+                randomly and independently drawn with probability $\epsilon$.
+                \end{itemize}
+              \item<5-7,9-> random networks with fixed in- (or out-) degree:
+                \begin{itemize}\small
+                \item random distribution of a fixed number of $1$'s in 
+                each row (column) of the adjacency matrix
+                \end{itemize}
+              \item<6-7,9-> small-world networks:
+                \begin{itemize}\small
+                \item (deterministic) nearest-neighbour connections
+                \item random redistribution of individual links with probability $\alpha$
+                \end{itemize}
+              \item<7,9-> networks with specified high-order connectivity statistics 
+                (motifs)
+              \item<9-> \ldots and infinitely many more
+              \end{itemize}
+            \end{itemize}
+          }}}
+    }
+  %%
+  %%\showgrid
+  }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{the balanced-random-network model {\tiny(brunel, 2000)}}
+\section{\ttl}
+\begin{frame}
+  \frametitle{\ttl}
+  \pgfslide{
+  %%
+    \only<1->{
+      \pgfputat{\pgfxy(3.3,5.5)}
+      {
+        \def\picname{brunel}
+        \pgfdeclareimage[interpolate=true,width=5cm]{\picname}{\figpath\picname}
+        \pgfbox[center,center]{\only<1->{\pgfuseimage{\picname}}}
+      }
+    }
+    \only<1-2>{
+      \pgfputat{\pgfxy(9,6.2)}{
+        \def\picname{dalemat}
+        \pgfdeclareimage[interpolate=true,width=4cm]{\picname}{\figpath\picname}
+        \pgfbox[center,center]{\pgfuseimage{\picname}}
+      }
+      \pgfputat{\pgfxy(9.1,8.1)}{\pgfbox[center,center]{\footnotesize 
+          Connection matrix $J=\{J_{ij}\}$}}
+      \pgfputat{\pgfxy(9.1,3.8)}{\pgfbox[center,center]{\footnotesize pre}}
+      \pgfputat{\pgfxy(6.8,6.2)}{\pgfbox[center,center]{
+          \rotatebox{90}{\parbox{2cm}{\centering\footnotesize post}}}}
+    }
+
+
+    \pgfputat{\pgfxy(0,3.7)}{
+      \pgfbox[left,top]{
+        \parbox{12cm}{
+          \footnotesize
+          \begin{itemize}
+          \item<1-2> $N_\Ex$ excitatory, $N_\In$ inhibitory neurons,
+            $N=N_\Ex+N_\In\sim{}10^{4\ldots{}5}$, $N_\Ex$:$N_\In$=4:1
+          \item<1-2> random Dale-conform connectivity with fixed in-degrees $K_{\Ex/\In}=N_{\Ex/\In}/10$
+          \item<2> LIF dynamics with current synapses\\[0.2cm]
+	  \item free parameters: $g$ (ratio of inhibitory to excitatory synaptic weight), $\frac{\nu_{\text{ext}}}{\nu_{\text{thr}}}$ (ratio of external rate to threshold rate)
+%            \begin{math}\displaystyle
+              %\boxed{
+%                \begin{array}{l}
+%                  \alert{\tauM{}\dot{v}_i=-v_i(t)+RI_{i}^\text{net}(t)+RI^\text{ext}(t)}
+%                  \quad(i\in\{1,\ldots,N\})\\[0.1cm]
+%                  \alert{I_{i}^\text{net}(t)=\sum_{j}(h_{ij}*s_j)(t)}
+%                  \quad\text{
+%                    (with postsynaptic current kernel $h_{ij}(t)=J_{ij}\cdot{}h(t)$)}\\[0.1cm]
+%                  \text{if $v_i(t_{i,k})\ge\theta$: spike at time $t_{i,k}$, 
+%                    reset $v_i(t_{i,k}^+)=0$ }\\[0.1cm]
+%                  \text{spike train: }s_i(t)=\sum_k{}\delta(t-t_{i,k})
+%                \end{array}
+              %}
+%            \end{math}
+
+            %%
+          \end{itemize}
+        }
+      }
+    }
+    %%
+  %%
+  %%\showgrid
+  }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{Activity regimes}
+\begin{frame}
+  \frametitle{\ttl}
+  \pgfslide{
+  %%
+    \pgfputat{\pgfxy(3,2.45)}
+    {
+      \def\picname{brunel00_fig2A}
+      \pgfdeclareimage[interpolate=true,width=5.5cm]{\picname}{\figpath\picname}
+      \rotatebox{0}{\pgfbox[center,center]{\only<2->{\pgfuseimage{\picname}}}}
+    }
+    %%
+    \pgfputat{\pgfxy(9.2,4.5)}
+    {
+      \def\picname{brunel00_fig8}
+      \pgfdeclareimage[interpolate=true,width=6.8cm]{\picname}{\figpath\picname}
+      \rotatebox{0}{\pgfbox[center,center]{\only<2>{\pgfuseimage{\picname}}}}
+    }
+    \pgfputat{\pgfxy(9,2.4)}
+    {
+      \def\picname{brunel00_fig7}
+      \pgfdeclareimage[interpolate=true,width=5.8cm]{\picname}{\figpath\picname}
+      \rotatebox{0}{\pgfbox[center,center]{\only<3->{\pgfuseimage{\picname}}}}
+    }
+    \pgfputat{\pgfxy(7.3,4.7)}{\pgfbox[bottom,left]{\only<3->{\footnotesize\bfseries simulation}}}
+    \pgfputat{\pgfxy(1.5,4.7)}{\pgfbox[bottom,left]{\only<2->{\footnotesize\bfseries theory}}}
+    \pgfputat{\pgfxy(1,0)}{\pgfbox[bottom,left]{\only<2->{\tiny(Brunel, 2000)}}}
+  %%
+   \pgfputat{\pgfxy(0,8.5)}
+    {
+      \pgfbox[left,top]{
+        \parbox{6cm}
+        {
+          \footnotesize
+          \begin{itemize}
+          \item<1-> analysis of network dynamics in diffusion approximation (small synaptic weights, high firing rates, small correlations)
+            {\tiny (see Brunel, 2000)}
+          \item<2->[$\curvearrowright$] stationary and oscillatory states\\[0.2cm]
+            \tiny
+            \begin{tabular}{rl}
+              SR:& synchronous regular\\
+              AI:& asynchronous irregular\\
+              SI:& synchronous irregular (slow and fast)
+            \end{tabular}
+          \end{itemize}
+        }
+      }
+    }
+  %%\showgrid
+  }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{the balanced-random-network model {\tiny(brunel, 2000)}}
+\begin{frame}
+  \frametitle{\ttl}
+    \only<2-4>{
+      %\pgfputat{\pgfxy(9.5,4.2)}
+      \pgfputat{\pgfxy(8.5,-1.3)}
+      {
+        \def\picname{brunel_allstates}
+        \pgfdeclareimage[interpolate=true,width=5.5cm]{\picname}{\figpath\picname}
+        \pgfbox[center,center]{\only<1->{\pgfuseimage{\picname}}}
+      }
+      \pgfsetlinewidth{1pt}
+      \pgfsetendarrow{\pgfarrowtriangle{2pt}}
+      \pgfline{\pgfxy(12.2,1.1)}{\pgfxy(12.2,7.9)}
+      \pgfputlabelrotated{.5}{\pgfxy(12.2,1.05)}{\pgfxy(12.2,7.95)}{-2pt}%
+      {\pgfbox[center,top]{\footnotesize external drive}}
+      \pgfputat{\pgfxy(8.5,2.6)}{\pgfbox[center,bottom]{%
+            \footnotesize Activity states
+          }} 
+    }
+    \only<2-4>{
+      \pgfsetlinewidth{2pt}
+      {
+        \color{blue}
+        \pgfrect[stroke]{\pgfxy(5.8,-2.65)}{\pgfxy(5.3,2.45)}}
+    }
+    \only<5->{
+      \pgfputat{\pgfxy(8.6,-1.0)}
+      {
+        \def\picname{chaos}
+        \pgfdeclareimage[interpolate=true,width=5.5cm]{\picname}{\figpath\picname}
+        \pgfbox[center,center]{\pgfuseimage{\picname}}
+      }
+      \pgfputat{\pgfxy(9.0,-4.5)}{\pgfbox[center,top]{%
+          \parbox{5cm}{ \tiny Simulation of two identical networks
+            \mbox{($N\sim{}10000$)}, slight perturbation of initial
+            membrane potential of {\color{blue} one} neuron
+            \mbox{($\Delta{}V=0.1\,\mV$)} }}} 
+      \pgfputat{\pgfxy(8.7,2.4)}{\pgfbox[center,bottom]{%
+            \footnotesize Chaos in random networks
+          }}
+    }
+    %%
+    \pgfputat{\pgfxy(0,8.5)}
+    {
+      \pgfbox[left,top]{
+        \parbox{7cm}
+        {
+          \footnotesize
+
+          \begin{itemize}
+          \item[]<1->\hspace*{-0.5cm}Simple model of a local cortex volume\\
+            \hspace*{-0.5cm}($\sim{}1\text{mm}^3$, $\sim{}10^{4\ldots{}5}$ neurons)
+          \end{itemize}
+        }
+      }
+    }
+    %%
+
+    %%
+    \pgfputat{\pgfxy(-0.5,1.6)}
+    {
+      \pgfbox[left,top]{
+        \parbox{6.5cm}
+        {
+          \footnotesize
+          \begin{itemize}
+          \item<2-> Cortical neuron receives much higher proportion
+            of excitatory synapses as compared to inhibitory synapses
+          \item<3-> In-vivo like activity\\
+            - large membrane potential \\fluctuations\\
+            - low firing rates\\
+            - irregular spiking
+          \item<4-> Possible explanation: cortex operates in inhibition dominated regime, i.e
+            stronger synaptic strengths for inhibitory neurons \\
+
+
+
+          %\item<3-> global oscillatory modes in various frequency bands
+          \item<5-> chaotic spiking (high sensitivity)
+          %\item[]<1->
+          %  \hspace*{-0.5cm}
+          %  \tiny (e.g.~van Vreeswijk \& Sompolinsky, 1996 ; Brunel, 2000)
+          \end{itemize}
+        }
+      }
+    }
+
+
+
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{Literature}
+\section{\ttl}
+\begin{frame}
+ \frametitle{\ttl: Cortex anatomy}
+  \pgfslide{
+  %%
+ \pgfputat{\pgfxy(0,8.2)}{\pgfbox[left,top]{\parbox{12.5cm}{\centering
+       \begin{itemize}\footnotesize
+       \item Abeles,\\ 
+         {\it Corticonics: Neural Circuits of the Cerebral Cortex},\\
+         Cambridge University Press, 1991
+       \item Braitenberg \& Sch{\"u}z,\\
+         {\it Cortex: Statistics and Geometry of Neuronal Connectivity},\\
+         Springer, 2nd edition, 1998\\[0.5cm]
+       \item Thomson \& Bannister (2003),
+         Interlaminar Connections in the neocortex,
+         Cerebral Cortex 13:5--14
+       \item Binzegger et al.~(2004),
+         A Quantitative Map of the Circuit of Cat 
+         Primary Visual Cortex,
+         J Neurosci 39(24):8441--8453
+       \item Hellwig (2000), A quantitative analysis of the local connectivity between 
+         pyramidal neurons in layers 2/3 of the rat visual cortex,
+         Biological Cybernetics 82:111--121
+       \item Lund et al.~(2003), Anatomical Substrates for Functional Columns in 
+         Macaque Monkey Primary Visual Cortex,
+         Cerebral Cortex 13:15--24
+       \item Voges et al.~(2010), 
+         A modeler's view on the spatial structure of intrinsic horizontal connectivity 
+         in the neocortex, Progress in Neurobiology 92(3):277--292
+       \item Song et al.~(2005),
+         Highly nonrandom features of synaptic connectivity in local cortical circuits,
+         PLoS Biology 3(3):0507--0519
+       \end{itemize}
+     }}}
+  %%
+  %%\showgrid
+  }
+\end{frame}
+\begin{frame}
+ \frametitle{\ttl: Spiking random-network models}
+  \pgfslide{
+    %%
+    \pgfputat{\pgfxy(0,8)}
+    {
+      \pgfbox[left,top]{
+        \parbox{12cm}
+        {
+          \footnotesize
+          \begin{enumerate}
+            %%
+          \item[]\underline{Random matrices:}
+            %%
+          \item ML Mehta, {\it Random matrices}, 3rd edition, Elsevier Ltd., 2004
+            %%
+            \\[0.5cm]
+          \item[]\underline{Recurrent-network dynamics:}
+            %%
+          \item LF Abbott, C van Vreeswijk, Asynchronous states in a network of pulse-coupled oscillators,
+            Phys Rev E 48:1483--1490, 1993
+            %%
+          \item N Brunel, Dynamics of sparsely connected networks of
+            excitatory and inhibitory spiking neurons, J Comput
+            Neurosci 8:183--208, 2000
+            %%
+          \item A Renart, N Brunel, XJ Wang, Mean-field theory of
+            irregularly spiking neuronal populations and working
+            memory in recurrent cortical networks, in
+            {\it Computational neuroscience -- A comprehensive approach}, J Feng (ed.), Chapman \& Hall/CRC, London, 2003
+            %%
+            %%
+          \end{enumerate}
+        }
+      }
+    }
+    %%
+    %%
+%    \showgrid
+  }
+\end{frame}
+
+\end{document}
+
+%%
+%% template
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{}
+\section{\ttl}
+\begin{frame}
+  \frametitle{\ttl}
+  \pgfslide{
+  %%
+  %%
+  %%\showgrid
+  }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+

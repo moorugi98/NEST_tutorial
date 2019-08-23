@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.33pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Biological background: Cortex structure}{3}{0}{1}
+\beamer@sectionintoc {2}{Some graph-theoretical concepts}{33}{0}{2}
+\beamer@sectionintoc {3}{Random networks}{42}{0}{3}
+\beamer@sectionintoc {4}{The balanced-random-network model {\relax \fontsize {6}{7}\selectfont (Brunel, 2000)}}{52}{0}{4}
+\beamer@sectionintoc {5}{Literature}{61}{0}{5}

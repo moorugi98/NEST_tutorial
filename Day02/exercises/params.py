@@ -1,0 +1,12 @@
+N =12500
+model ="iaf_psc_delta"
+E_L = -70.0
+V_th = -55.0
+V_reset = E_L
+C_m = 250.0
+tau_m = 10.0
+I_e = 400.0
+J_E = 0.2
+g = 6
+d = 0.1
+T = 1000.0

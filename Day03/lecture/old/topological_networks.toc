@@ -1,0 +1,16 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Introduction}{0}{0}{1}
+\beamer@subsectionintoc {1}{1}{Dynamics}{1}{0}{1}
+\beamer@subsectionintoc {1}{2}{Random connectivity}{3}{0}{1}
+\beamer@subsectionintoc {1}{3}{Non-random connectivity}{5}{0}{1}
+\beamer@sectionintoc {2}{Effect of topology on network dynamics}{7}{0}{2}
+\beamer@subsectionintoc {2}{1}{Degree distribution}{8}{0}{2}
+\beamer@subsectionintoc {2}{2}{Dale versus hybrid connectivity}{8}{0}{2}
+\beamer@subsectionintoc {2}{3}{Distance dependent connectivity}{10}{0}{2}
+\beamer@subsectionintoc {2}{4}{Clustered networks and metastability}{12}{0}{2}
+\beamer@sectionintoc {3}{Applications to real data}{13}{0}{3}
+\beamer@subsectionintoc {3}{1}{Stimulus induced variability reduction}{14}{0}{3}
+\beamer@subsectionintoc {3}{2}{Complex spatio-temporal dynamics during reaching}{15}{0}{3}
+\beamer@sectionintoc {4}{Summary}{18}{0}{4}
+\beamer@sectionintoc {5}{Bibliography}{19}{0}{5}

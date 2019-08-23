@@ -1,0 +1,202 @@
+%
+\documentclass{beamer}
+%%\documentclass[handout]{beamer}
+
+\definecolor{headcolor}{rgb}{0,0.3,0.6}
+%\renewcommand{\alert}[1]{\textcolor{headcolor}{#1}}
+\renewcommand{\alert}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\mode<presentation>
+{
+  \usetheme{default}
+  %% \setbeamercovered{transparent}
+  \usefonttheme{professionalfonts}
+  \usefonttheme{structurebold}
+  \usecolortheme[rgb={0,0.3,0.6}]{structure}
+  %%  \usecolortheme[rgb={0,0,0.7}]{structure}
+}
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{rotate}
+\usepackage{color}
+\usepackage{verbatim}
+\usepackage{xmpmulti}
+\usepackage{pgfarrows}
+%\usepackage{pgf}
+
+%\input{/home/tom/lib/tex/defs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%\AtBeginSection[]
+%{
+%  \begin{frame}<beamer>
+%    \frametitle{Outline}
+%    \tableofcontents[currentsection]
+%  \end{frame}
+%}
+% \AtBeginSubsection[]
+% {
+%   \begin{frame}<beamer>
+%     \frametitle{Outline}
+%     \tableofcontents[currentsubsection]
+%   \end{frame}
+% }
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+%\beamerdefaultoverlayspecification{<+->}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\width{12.5} % slide width
+\def\height{8.5} % slide height
+\newcommand{\showgrid}{%
+  \pgfsetlinewidth{0.8pt} 
+  \pgfgrid[step={\pgfpoint{1cm}{1cm}}]{\pgforigin}{\pgfxy(\width,\height)}{} 
+  \pgfsetlinewidth{0.1pt} 
+  \pgfgrid[stepx=0.1cm,stepy=0.1cm]{\pgforigin}{\pgfxy(\width,\height)}
+}
+\newcommand{\pgfslide}[1]{%
+  \hspace*{-1cm}
+  \begin{pgfpicture}{0cm}{0cm}{\width cm}{\height cm}
+    #1
+  \end{pgfpicture}  
+}
+\def\figpath{figs/}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\A}{{\text{A}^{-}}}
+\newcommand{\Ca}{{\text{Ca}^{2+}}}
+\newcommand{\Cl}{{\text{Cl}^{-}}}
+\newcommand{\di}{\text{d}}
+\newcommand{\diff}[2]{\displaystyle\frac{\text{d}#1}{\text{d}#2}}
+\newcommand{\e}{\text{e}}
+\newcommand{\Epop}{\mathcal{E}}
+\newcommand{\EW}[2][]{\text{E}_{#1}\left[#2\right]}
+\newcommand{\Ex}{\text{E}}
+\newcommand{\FT}{\mathfrak{F}}
+\newcommand{\iFT}{\mathfrak{F}^{-1}}
+\newcommand{\Fourier}[2]{\mathfrak{F}\left[#1\right]\left(#2\right)}
+\newcommand{\iFourier}[2]{\mathfrak{F}^{-1}\left[#1\right]\left(#2\right)}
+\newcommand{\In}{\text{I}}
+\newcommand{\inp}{\text{inp}}
+\newcommand{\Ipop}{\mathcal{I}}
+\newcommand{\K}{{\text{K}^{+}}}
+\newcommand{\Leak}{{\text{L}}}
+\newcommand{\mm}{\text{mm}}
+\newcommand{\mV}{\text{mV}}
+\newcommand{\Na}{{\text{Na}^{+}}}
+\newcommand{\one}{\mathbb{I}}
+\newcommand{\rest}{\text{rest}}
+\newcommand{\tauM}{\tau_\text{m}}
+\newcommand{\tauR}{\tau_\text{ref}}
+\newcommand{\vect}[2]{\begin{pmatrix}#1\\#2\end{pmatrix}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%
+%% title page
+\begin{frame}
+  \pdfbookmark[2]{Title}{TitlePage}
+  \pgfslide{
+    %% 
+    \pgfputat{\pgfxy(6.25,8)}{\pgfbox[center,top]{\parbox{12.5cm}{\centering
+          \LARGE\color{headcolor}{
+            %%
+            {\bfseries Simulation of Biological Neuronal Networks}\\[0.3cm]
+            %%
+            {Introduction:}\\
+            %% 
+          }
+        }}}
+    %% 
+    \pgfputat{\pgfxy(6.25,4.0)}{\pgfbox[center,top]{\parbox{12.5cm}{\centering
+          {\large Robin Pauli, Jyotika Bahuguna,\\ Claudia Bachmann, Abigail Morrison,}\\[0.2cm]
+          {\small{} \{r.pauli\textbar c.bachmann\textbar  j.bahuguna \textbar morrison\}@fz-juelich.de{}}
+        }}}
+        
+    %%
+    \pgfputat{\pgfxy(6.25,2.0)}{\pgfbox[center,top]{\parbox{12.5cm}{\centering
+          \footnotesize
+          Inst.~of Neuroscience and Medicine (INM-6)\\
+          Computational and Systems Neuroscience\\
+          Research Center J\"ulich, Germany
+        }}}
+    %%
+    \pgfputat{\pgfxy(0.5,-0.7)}{\pgfbox[left,bottom]{\parbox{12.5cm}{
+          \footnotesize 
+some time July        }}}
+    %% \showgrid
+  }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{\ttl}
+\begin{frame}
+  \frametitle{Certificate Requirements}
+  \begin{itemize}
+  \item Attendance at all lectures (9- $\sim$ 10.30)
+  \item Tutor signs off on all daily exercises \\($\sim$ 18:00 is end of day so do it before!)
+  \item "Catch" up day on Friday
+  \item Course Material at
+  \begin{enumerate}
+  \item git clone https://github.com/INM-6/BNN\_course\_pub 
+  \item git pull
+  \item Nest Tutorials: http://www.nest-simulator.org/introduction-to-pynest/
+  \end{enumerate}
+  \end{itemize}
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Additional Info}
+\begin{itemize}
+\item After the lecture you may come and go as you please
+\item If you are working outside the iLab, you should return by 16:00 at the latest (we need time for checking your exercises)
+\item Checklist:
+\begin{enumerate}
+\item If there's an error: what is the error code telling you?
+\item Is it in one of the nest tutorials? (http://www.nest-simulator.org/introduction-to-pynest/)
+\item Can I google/stackoverflow it?
+\item Does one of the other students have the same problem?
+\item Ask the tutors!
+\end{enumerate}
+
+\item No food or drink in the iLab
+\item Do not leave the iLab empty and unlocked
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}
+
+%%
+%% template
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttl{}
+\section{\ttl}
+\begin{frame}
+  \frametitle{\ttl}
+  \pgfslide{
+  %%
+  %%
+  %%\showgrid
+  }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
